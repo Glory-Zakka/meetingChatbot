@@ -91,6 +91,7 @@ def upload_document(token, file):
             files={"file": (file.name, file.getvalue(), file.type)},
             timeout=120,
         )
+    
         if r.status_code == 200:
             return r.json()
         try:
@@ -102,7 +103,6 @@ def upload_document(token, file):
     except requests.exceptions.RequestException as e:
         st.error(f"Connection error: {e}")
         return None
-
 
 def list_documents(token):
     try:

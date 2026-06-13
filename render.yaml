@@ -28,6 +28,8 @@ services:
         value: production
       - key: APP_NAME
         value: Meeting Minute Chatbot
+      - key: USE_SQLITE
+        value: "true"
 
   - type: web
     name: meeting-chatbot-frontend
@@ -38,3 +40,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
+      - key: API_BASE_URL
+        value: https://meeting-chatbot-api.onrender.com/api/v1

@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.api.routes.chat import router as chat_router
 from backend.app.api.routes.auth import router as auth_router
+from backend.app.api.routes.admin import router as admin_router
+from backend.app.api.routes.admin_users import router as admin_users_router
 from backend.app.db.session import create_tables
 from backend.app.config import settings
 from backend.app.utils.logger import get_logger
@@ -24,6 +26,8 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(chat_router, prefix="/api/v1")
+app.include_router(admin_router, prefix="/api/v1")
+app.include_router(admin_users_router, prefix="/api/v1")
 
 
 @app.get("/")

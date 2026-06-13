@@ -76,3 +76,21 @@ def authenticate_user(
         "user_role": user.role.value,
         "full_name": user.full_name,
     }
+
+def get_all_users(db: Session, include_inactive: bool = False):
+    """Returns all users, optionally including deactivated ones."""
+    query = db.query(User)
+    if not include_inactive:
+        query = query.filter(User.is_active == True)
+    return query.order_by(User.created_at.desc()).all()
+
+
+def deactivate_user(db: Session, user_id: str) -> User:
+    """Deactivates a user account."""
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise ValueError("User not found.")
+    user.is_active = False
+    db.commit()
+    db.refresh(user)
+    return user

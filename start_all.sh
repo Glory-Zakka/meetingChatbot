@@ -42,3 +42,4 @@ echo "================================================"
 # run this in the terminal: 
 # bash /teamspace/studios/this_studio/meeting_minutes/start_all.sh
 # sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+

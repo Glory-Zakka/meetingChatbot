@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ["python313", "pip"]
-
-[phases.install]
-cmds = ["pip3 install --break-system-packages -r backend/requirements.txt"]
-
-[start]
-cmd = "python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"

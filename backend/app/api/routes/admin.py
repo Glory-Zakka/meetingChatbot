@@ -18,9 +18,11 @@ logger = get_logger(__name__)
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
 
-UPLOAD_DIR = (
-    "/teamspace/studios/this_studio/meeting_minutes/storage/documents"
+UPLOAD_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
+    "storage", "documents"
 )
+
 MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024  # 50 MB
 
 

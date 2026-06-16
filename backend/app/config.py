@@ -2,8 +2,10 @@ from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 
-class Settings(BaseSettings):
-    # App
+class Config:
+    env_file = None  # Don't read from .env file
+    env_file_encoding = "utf-8"
+    extra = "ignore"    # App
     app_name: str = "Meeting Minute Chatbot"
     app_env: str = "development"
 

@@ -2,18 +2,16 @@ from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 
-class Config:
-    env_file = None  # Don't read from .env file
-    env_file_encoding = "utf-8"
-    extra = "ignore"    # App
+class Settings(BaseSettings):
+    # App
     app_name: str = "Meeting Minute Chatbot"
     app_env: str = "development"
 
     # OpenAI
-    openai_api_key: str
+    openai_api_key: str = ""
 
-    # Groq 
-    groq_api_key: str = "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"
+    # Groq
+    groq_api_key: str = ""
 
     # PostgreSQL
     postgres_host: str = "localhost"
@@ -23,7 +21,7 @@ class Config:
     postgres_password: str = "postgres"
 
     # JWT
-    jwt_secret_key: str
+    jwt_secret_key: str = "default-dev-secret-change-in-production"
     jwt_algorithm: str = "HS256"
     jwt_access_token_expire_minutes: int = 480
 
@@ -38,7 +36,7 @@ class Config:
         )
 
     class Config:
-        env_file = "/teamspace/studios/this_studio/meeting_minutes/.env"
+        env_file = None
         env_file_encoding = "utf-8"
         extra = "ignore"
 
